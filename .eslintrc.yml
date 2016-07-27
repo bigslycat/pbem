@@ -1,0 +1,14 @@
+extends:
+  - google
+env:
+  browser: true
+  amd: true
+  node: true
+parserOptions:
+  ecmaVersion: 6
+rules:
+  guard-for-in: off
+  require-jsdoc: off
+  no-undef:
+    - error
+    - typeof: false
