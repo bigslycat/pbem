@@ -144,7 +144,7 @@ Alias of method `Template.prototype.createBlock()`
 Alias of method `Block.prototype.createElement()` in Block template or
 alias of method `Element.prototype.createElement()` in Element template.
 
--   `String` **`name`** — Template file name without extension
+-   `String` **`name`** — Element name (part of template file name)
 
 -   `Object` **`options`** — Template options like options `block()`
 
