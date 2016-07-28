@@ -17,9 +17,9 @@ const pbem = require('pbem');
 const path = require('path');
 
 pbem({
-  viewsDir: __dirname + './views',
-  blocksDir: __dirname + './views/blocks'
-})
+  viewsDir: __dirname + '/views',
+  blocksDir: __dirname + '/views/blocks'
+});
 
 const index = pbem.createTemplate('index');
 ```
