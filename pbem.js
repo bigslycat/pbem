@@ -36,6 +36,7 @@ for (let methodName in presetMethodsMaping) {
 }
 
 const config = require('./config');
+const objectFilter = require('./helpers/objectFilter');
 
 module.exports = Object.assign(
   function setConfig(newConfig) {
@@ -44,7 +45,12 @@ module.exports = Object.assign(
     return setConfig;
   }, {
     createTemplate(name, options) {
-      return new scope.Template(name, options);
+      return new scope.Template(name, objectFilter(
+        options,
+        'locals',
+        'pugOptions',
+        'debug'
+      ));
     }
   }
 );
