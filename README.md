@@ -7,53 +7,149 @@ BEM-helper system for Pug (Jade)
 Via npm:
 
 ```bash
-npm install -S pbem
+npm install --save pbem
 ```
 
 ## Usage
 
+### External API
+
+#### `pbem(config)`
+
+Overriding the default settings.
+
+-   `Object` **`config`** — Object with params:
+
+    -   `String` **`viewsDir`** — Directory for main templates.
+        Default `path.join(process.cwd(), 'views')`
+
+    -   `String` **`blocksDir`** — Blocks directory.
+        Default `path.join(process.cwd(), 'views/blocks')`
+
+    -   `Object` **`pugOptions`** — Pug [options](http://jade-lang.com/api/)
+
+    `@returns` **`pbem()`**
+
 ```javascript
 const pbem = require('pbem');
-const path = require('path');
 
 pbem({
   viewsDir: __dirname + '/views',
-  blocksDir: __dirname + '/views/blocks'
+  blocksDir: __dirname + '/views/blocks',
+  pugOptions: {
+    pretty: true
+  }
+});
+```
+
+#### `pbem.createTemplate(name[, options])`
+
+Create a main template as an instance of class [`Template`](./lib/Template.js).
+
+-   `String` **`name`** — Template file name without extension
+
+-   `Object` **`options`** — Template options with params:
+
+    -   `Object` **`locals`** — Data for rendering
+
+    -   `Object` **`pugOptions`** — Owerwrite pug options for template
+
+    -   `Boolean` **`debug`** — Debug mode. All private properties and methods
+        will be available in property `privates` of Template instance
+
+```javascript
+const pbem = require('pbem')({
+  viewsDir: __dirname + '/views'
 });
 
-const index = pbem.createTemplate('index');
+// __dirname + '/views/index.pug'
+let indexTemplate = pbem.createTemplate('index');
+
+// Render template and return as string
+indexTemplate.toString();
 ```
 
-views/blocks/header.pug:
+### Template API
+
+This API is available in templates.
+
+#### Into main template, Block template and Element template
+
+##### Function `attributes()`
+
+Compile HTML attributes of current BEM-entity:
 
 ```pug
-header&attributes( attributes() )
-  -
-    logoOptions = {
-      mods: {
-        compact: true,
-        theme: 'dark'
-      },
-      mixes: [
-      // Block name    Modifiers
-        ['image',    { noBorder: true }],
-      // Block name    Element Name
-        ['header',     'logo']
-      ],
-      data: {
-        dataParam: 'dataValue'
-      },
-      attributes: {
-        title: 'Logo image title'
-      },
-      locals: {
-        localVar1: 'value1',
-        localVar2: 'value2'
-      }
-    }
-
-  != block('logo', logoOptions)
-
-  //- Displays the header__description
-  != element('description').local('text', descriptionText)
+div&attributes( attributes() )
 ```
+
+<http://jade-lang.com/reference/attributes/>
+
+##### Function `block(name[, options])`
+
+Alias of method `Template.prototype.createBlock()`
+
+-   `String` **`name`** — Template file name without extension
+
+-   `Object` **`options`** — Template options with params:
+
+    -   `Object` **`mods`** — Modifiers. Values must be `string` or `true`
+
+    -   `Array,` **`mixes`** — Mixes.
+
+        Mixes format must be:
+
+        ```javascript
+        let mixes = [
+          // Add two CSS classes: block-1, block-1_modifier_value1
+          ['block-1', {modifier: 'value1'}],
+          // block-2, block-2__element-2, block-2__element-2_modifier_value2
+          ['block-2', 'element-2', {modifier: 'value2'}]
+        ];
+        ```
+
+        or
+
+        ```javascript
+        let mixes = [
+          {block: 'block-1', element: 'element-1', mods: { ... }},
+          {block: 'block-2', mods: { ... }}
+        ];
+        ```
+
+    -   `Object` **`data`** — HTML data-attributes
+
+        ```javascript
+        let data = {
+          // Equal data-ajax-url="/posts/100500"
+          ajaxUrl: '/posts/100500'
+        };
+        ```
+
+    -   `Object` **`attributes`** — Other HTML attributes
+
+    -   `Object` **`locals`** — Data for rendering
+
+    -   `Object` **`pugOptions`** — Owerwrite pug options for template
+
+    -   `Boolean` **`debug`** — Debug mode. All private properties and methods
+        will be available in property `privates` of Template instance
+
+    `@returns` [`Block`](./lib/Block.js) instance.
+
+#### Into Block template and Element template
+
+##### Function `element(name[, options])`
+
+Alias of method `Block.prototype.createElement()` in Block template or
+alias of method `Element.prototype.createElement()` in Element template.
+
+-   `String` **`name`** — Template file name without extension
+
+-   `Object` **`options`** — Template options like options `block()`
+
+    `@returns` [`Block`](./lib/Block.js) instance.
+
+### Examples
+
+This README is incomplete.
