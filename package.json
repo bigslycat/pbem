@@ -1,8 +1,8 @@
 {
   "name": "pbem",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "BEM-helper system for Pug (Jade)",
-  "main": "bem.js",
+  "main": "pbem.js",
   "scripts": {},
   "repository": {
     "type": "git",
