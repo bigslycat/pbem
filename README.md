@@ -12,6 +12,15 @@ npm install --save pbem
 
 ## Usage
 
+As an example of basic usage, see the [demo](./demo/). You can run the demo by
+command:
+
+```bash
+npm run demo
+```
+
+Rendered template will be displayed in the terminal.
+
 ### External API
 
 #### `pbem(config)`
@@ -149,7 +158,3 @@ alias of method `Element.prototype.createElement()` in Element template.
 -   `Object` **`options`** — Template options like options `block()`
 
     `@returns` [`Block`](./lib/Block.js) instance.
-
-### Examples
-
-This README is incomplete.
