@@ -44,7 +44,7 @@ module.exports = Object.assign(
 
     return setConfig;
   }, {
-    createTemplate(name, options) {
+    createTemplate(name, options = {}) {
       return new scope.Template(name, objectFilter(
         options,
         'locals',
