@@ -13,13 +13,18 @@ npm install --save pbem
 ## Usage
 
 As an example of basic usage, see the [demo](./demo/). You can run the demo by
-command:
+command in this module directory:
 
 ```bash
 npm run demo
 ```
 
-Rendered template will be displayed in the terminal.
+And rendered template will be displayed in the terminal. Also you can run this
+command from yor app directory:
+
+```bash
+node -e 'require("pbem/demo/demo")'
+```
 
 ### External API
 
