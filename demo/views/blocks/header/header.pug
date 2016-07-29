@@ -1,0 +1,7 @@
+header&attributes( attributes() )
+
+  //- .header__title
+  != element('title').local('title', title)
+
+  //- .header__description
+  != element('description').local({description})

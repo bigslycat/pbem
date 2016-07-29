@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title #{pageTitle}. #{pageDescription}
+  body
+
+    -
+      headerOptions = {
+        locals: {
+          title: pageTitle,
+          description: pageDescription
+        }
+      }
+
+    //- .header
+    != block('header', headerOptions)
+
+    //-
+      .content
+      Equal to block('content', {locals: {text: content}})
+    != block('content').local('text', content)
+
+    //-
+      .footer
+      Equal to block('footer', {locals: {license, url: githubUrl}})
+    != block('footer').local('license', license).local({url: githubUrl})

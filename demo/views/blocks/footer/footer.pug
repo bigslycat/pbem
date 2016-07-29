@@ -1,0 +1,7 @@
+footer&attributes( attributes() )
+
+  - licenseLinkText = `License ${license.type}`
+
+  != block('link').attr('href', license.url).local('text', licenseLinkText)
+
+  != block('link').attr('href', url).local('text', 'PBEM on GitHub')

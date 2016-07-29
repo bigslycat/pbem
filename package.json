@@ -1,9 +1,11 @@
 {
   "name": "pbem",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "BEM-helper system for Pug (Jade)",
   "main": "pbem.js",
-  "scripts": {},
+  "scripts": {
+    "demo": "node demo/demo.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bigslycat/pbem.git"

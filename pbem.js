@@ -11,15 +11,15 @@ require('./lib/Element')(PRIVATE, scope);
 const presetMethodsMaping = {
   mod: {
     type: 'mods',
-    targetClass: scope.Element
+    targetClass: scope.Block
   },
   attr: {
     type: 'attributes',
-    targetClass: scope.Element
+    targetClass: scope.Block
   },
   data: {
     type: 'data',
-    targetClass: scope.Element
+    targetClass: scope.Block
   },
   local: {
     type: 'locals',
