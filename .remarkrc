@@ -1,0 +1,7 @@
+{
+  "plugins": {
+    "remark-lint": {
+      "maximum-heading-length": 80
+    }
+  }
+}

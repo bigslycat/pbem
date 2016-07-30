@@ -28,7 +28,7 @@ node -e 'require("pbem/demo/demo")'
 
 ### External API
 
-#### `pbem(config)`
+#### Function `pbem(config)`
 
 Overriding the default settings.
 
@@ -56,9 +56,10 @@ pbem({
 });
 ```
 
-#### `pbem.createTemplate(name[, options])`
+#### Method `pbem.createTemplate(name[, options])`
 
-Create a main template as an instance of class [`Template`](./lib/Template.js).
+Create a main template as an instance of class
+[**`Template`**](./lib/Template.js).
 
 -   `String` **`name`** — Template file name without extension
 
@@ -87,19 +88,11 @@ indexTemplate.toString();
 
 This API is available in templates.
 
-#### Into main template, Block template and Element template
-
-##### Function `attributes()`
-
-Compile HTML attributes of current BEM-entity:
-
-```pug
-div&attributes( attributes() )
-```
-
 <http://jade-lang.com/reference/attributes/>
 
-##### Function `block(name[, options])`
+#### Function `block(name[, options])`
+
+*Available in main template, Block template and Element template.*
 
 Alias of method `Template.prototype.createBlock()`
 
@@ -149,17 +142,73 @@ Alias of method `Template.prototype.createBlock()`
     -   `Boolean` **`debug`** — Debug mode. All private properties and methods
         will be available in property `privates` of Template instance
 
-    `@returns` [`Block`](./lib/Block.js) instance.
+    `@returns` [**`Block`**](./lib/Block.js) instance.
 
-#### Into Block template and Element template
+#### Function `element(name[, options])`
 
-##### Function `element(name[, options])`
+*Available in Block template and Element template.*
 
 Alias of method `Block.prototype.createElement()` in Block template or
 alias of method `Element.prototype.createElement()` in Element template.
 
 -   `String` **`name`** — Element name (part of template file name)
 
--   `Object` **`options`** — Template options like options `block()`
+-   `Object` **`options`** — Template options like options of `block()`
 
-    `@returns` [`Block`](./lib/Block.js) instance.
+    `@returns` [**`Element`**](./lib/Element.js) instance.
+
+#### Function `attributes()`
+
+*Available in Block template and Element template.*
+
+Compile HTML attributes of current BEM-entity:
+
+```pug
+div&attributes( attributes() )
+```
+
+#### Method `local(name[, value])`
+
+Adds locals
+
+There is in the [**`Template`**](./lib/Template.js),
+[**`Block`**](./lib/Block.js), [**`Element`**](./lib/Element.js)
+
+```javascript
+pbem.createTemplate('index')
+  .local('var1', 'value1')
+  .local('var2', 'value2');
+```
+
+```pug
+!= block('header').local('title', post.title);
+!= block('content').local({text: post.content, date: post.date});
+```
+
+#### Methods `mod(name[, value])`, `attr(name[, value])`, `data(name[, value])`
+
+Adds one or many modifiers, attributes or data-attributes
+
+There is in the [**`Block`**](./lib/Block.js),
+[**`Element`**](./lib/Element.js). Also used, as in the previous case.
+
+#### Method `mix(blockName[, elementName][, modifiers])`
+
+Adds one or many mixes
+
+Add one mix:
+
+```pug
+!=  block('header').mix('article', 'info', {compact: true})
+```
+
+One mix or many mixes:
+
+```javascript
+// As one or many arguments
+.mix(['block-1', {mod1: true}], ['block-2', 'element-2', {mod2: 'value'}], ...)
+.mix({block: 'block', element: 'element', mods: { ... }}, ...)
+
+// As Array
+.mix([{block: 'block-1'}, ['block-2', 'element-2', {mod2: true}], ...])
+```
