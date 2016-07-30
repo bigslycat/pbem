@@ -88,8 +88,6 @@ indexTemplate.toString();
 
 This API is available in templates.
 
-<http://jade-lang.com/reference/attributes/>
-
 #### Function `block(name[, options])`
 
 *Available in main template, Block template and Element template.*
@@ -166,6 +164,8 @@ Compile HTML attributes of current BEM-entity:
 ```pug
 div&attributes( attributes() )
 ```
+
+<http://jade-lang.com/reference/attributes/>
 
 #### Method `local(name[, value])`
 
