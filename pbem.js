@@ -54,8 +54,9 @@ module.exports = Object.assign(
     precompile() {
       let {viewsDir, blocksDir} = config;
 
-      let viewsPathsPattern = path.join(viewsDir, '*.pug');
-      let blocksPathsPattern = path.join(blocksDir, '**', '*.pug');
+      let filePatternPart = '*' + config.templateExt;
+      let viewsPathsPattern = path.join(viewsDir, filePatternPart);
+      let blocksPathsPattern = path.join(blocksDir, '**', filePatternPart);
 
       glob.sync(viewsPathsPattern).concat(
         glob.sync(blocksPathsPattern)
