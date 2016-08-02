@@ -2,6 +2,11 @@
 
 BEM-helper system for Pug (Jade)
 
+-   [x] Precompiling all templates before usage
+-   [x] Custom delimiters of file/class names
+-   [ ] [Redefinition levels](https://bem.info/methodology/filesystem/#examples-of-using-redefinition-levels)
+-   [ ] Lazy async templates compiling
+
 ## Installation
 
 Via npm:
@@ -42,6 +47,18 @@ Overriding the default settings.
 
     -   `String` **`blocksDir`** — Blocks directory.
         Default `path.join(process.cwd(), 'views/blocks')`
+
+    -   `String` **`elementDelimiter`** — Block-element delimiter.
+        Default `__`
+
+    -   `String` **`modifierDelimiter`** — (Block|element)-modifier delimiter.
+        Default `_`
+
+    -   `String` **`modifierValueDelimiter`** — Modifier-value delimiter.
+        Default `_`
+
+    -   `String` **`vordsDelimiter`** — Words delimiter in modifier name and
+        value. Default `_`
 
     -   `Object` **`pugOptions`** — Pug [options](http://jade-lang.com/api/)
 
