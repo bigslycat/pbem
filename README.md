@@ -34,6 +34,9 @@ Overriding the default settings.
 
 -   `Object` **`config`** — Object with params:
 
+    -   `String` **`templateExt`** — Template file name extension.
+        Defaut `.pug`
+
     -   `String` **`viewsDir`** — Directory for main templates.
         Default `path.join(process.cwd(), 'views')`
 
