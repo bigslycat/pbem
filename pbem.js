@@ -1,8 +1,11 @@
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
 const PRIVATE = Symbol();
 
-const scope = {};
+const scope = require('./scope');
 
 require('./lib/Template')(PRIVATE, scope);
 require('./lib/Block')(PRIVATE, scope);
@@ -37,13 +40,30 @@ for (let methodName in presetMethodsMaping) {
 
 const config = require('./config');
 const objectFilter = require('./helpers/objectFilter');
+const compileTemplate = require('./helpers/compileTemplate');
 
 module.exports = Object.assign(
   function setConfig(newConfig) {
     Object.assign(config, newConfig);
 
+    config.viewsDir = fs.realpathSync(config.viewsDir);
+    config.blocksDir = fs.realpathSync(config.blocksDir);
+
     return setConfig;
   }, {
+    precompile() {
+      let {viewsDir, blocksDir} = config;
+
+      let viewsPathsPattern = path.join(viewsDir, '*.pug');
+      let blocksPathsPattern = path.join(blocksDir, '**', '*.pug');
+
+      glob.sync(viewsPathsPattern).concat(
+        glob.sync(blocksPathsPattern)
+      ).forEach(templatePath => compileTemplate(templatePath));
+
+      return this;
+    },
+
     createTemplate(name, options = {}) {
       return new scope.Template(name, objectFilter(
         options,

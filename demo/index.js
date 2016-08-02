@@ -9,7 +9,7 @@ pbem({
   pugOptions: {
     pretty: true
   }
-});
+}).precompile();
 
 let data = {
   pageTitle: 'PBEM',

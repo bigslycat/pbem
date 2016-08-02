@@ -31,6 +31,7 @@
   "homepage": "https://github.com/bigslycat/pbem#readme",
   "dependencies": {
     "decamelize": "^1.2.0",
+    "glob": "^7.0.5",
     "pug": "^2.0.0-beta4"
   },
   "devDependencies": {
