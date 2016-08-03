@@ -4,7 +4,7 @@ BEM-helper system for Pug (Jade)
 
 -   [x] Precompiling all templates before usage
 -   [x] Custom delimiters of file/class names
--   [ ] [Redefinition levels](https://bem.info/methodology/filesystem/#examples-of-using-redefinition-levels)
+-   [ ] [Redefinition levels](https://en.bem.info/methodology/filesystem/#examples-of-using-redefinition-levels)
 -   [ ] Lazy async templates compiling
 
 ## Installation
