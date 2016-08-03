@@ -2,7 +2,7 @@
 
 const pug = require('pug');
 
-const config = require('../config');
+const config = require('../lib/Config');
 const {compiledTemplates} = require('../scope');
 
 module.exports = templatePath => {

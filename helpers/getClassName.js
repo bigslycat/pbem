@@ -1,7 +1,7 @@
 'use strict';
 
 const decamelize = require('decamelize');
-const config = require('../config');
+const config = require('../lib/Config');
 
 module.exports = (block, element, modName, modValue) => {
   let {

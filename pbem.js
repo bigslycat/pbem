@@ -38,7 +38,7 @@ for (let methodName in presetMethodsMaping) {
   };
 }
 
-const config = require('./config');
+const config = require('./lib/Config');
 const objectFilter = require('./helpers/objectFilter');
 const compileTemplate = require('./helpers/compileTemplate');
 
