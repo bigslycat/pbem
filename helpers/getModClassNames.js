@@ -2,7 +2,7 @@
 
 const getClassName = require('./getClassName');
 
-module.exports = (block, element, mods) => {
+module.exports = (scopeConfig, block, element, mods) => {
   let modClassNames = [];
 
   for (let modName in mods) {
@@ -10,6 +10,7 @@ module.exports = (block, element, mods) => {
 
     if (modValue) {
       modClassNames.push(getClassName(
+        scopeConfig,
         block,
         element,
         modName,

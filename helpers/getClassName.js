@@ -1,15 +1,14 @@
 'use strict';
 
 const decamelize = require('decamelize');
-const config = require('../lib/Config');
 
-module.exports = (block, element, modName, modValue) => {
+module.exports = (scopeConfig, block, element, modName, modValue) => {
   let {
     elementDelimiter,
     modifierDelimiter,
     modifierValueDelimiter,
     vordsDelimiter
-  } = config;
+  } = scopeConfig;
 
   let className = block;
 

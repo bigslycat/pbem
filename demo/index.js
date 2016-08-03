@@ -3,12 +3,17 @@
 const path = require('path');
 const pbem = require('../pbem');
 
-pbem({
-  viewsDir: path.join(__dirname, 'views'),
-  blocksDir: path.join(__dirname, 'views', 'blocks'),
+let mainScope = pbem({
+  viewsDir: path.join(__dirname, 'main.views'),
+  blocksDir: path.join(__dirname, 'main.views', 'blocks'),
   pugOptions: {
     pretty: true
   }
+}).precompile();
+
+let additionalScope = pbem({
+  viewsDir: path.join(__dirname, 'additional.views'),
+  blocksDir: path.join(__dirname, 'additional.views', 'blocks')
 }).precompile();
 
 let data = {
@@ -22,8 +27,22 @@ let data = {
   githubUrl: 'https://github.com/bigslycat/pbem'
 };
 
-let renderedMarkup = pbem.createTemplate('index')
+let renderedMainScopeMarkup = mainScope.createTemplate('index')
   .local(data)
   .toString();
 
-console.log(renderedMarkup);
+let renderedAdditionalScopeMarkup = additionalScope.createTemplate('page')
+  .local('content', data.content)
+  .toString();
+
+console.log(
+  'renderedMainScopeMarkup:\n\n',
+  renderedMainScopeMarkup,
+  '\n\n'
+);
+
+console.log(
+  'renderedAdditionalScopeMarkup:\n\n',
+  renderedAdditionalScopeMarkup,
+  '\n\n'
+);

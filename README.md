@@ -4,7 +4,7 @@ BEM-helper system for Pug (Jade)
 
 -   [x] Precompiling all templates before usage
 -   [x] Custom delimiters of file/class names
--   [ ] [Redefinition levels](https://en.bem.info/methodology/filesystem/#examples-of-using-redefinition-levels)
+-   [x] [Redefinition levels](https://en.bem.info/methodology/filesystem/#examples-of-using-redefinition-levels)
 -   [ ] Lazy async templates compiling
 
 ## Installation
@@ -35,7 +35,7 @@ node -e 'require("pbem/demo")'
 
 #### Function `pbem(config)`
 
-Overriding the default settings.
+Create a namespace. Each namespace contains the custom settings.
 
 -   `Object` **`config`** — Object with params:
 
@@ -62,12 +62,12 @@ Overriding the default settings.
 
     -   `Object` **`pugOptions`** — Pug [options](http://jade-lang.com/api/)
 
-    `@returns` **`pbem()`**
+    `@returns` `Object` **`namespace`**
 
 ```javascript
 const pbem = require('pbem');
 
-pbem({
+const mainScope = pbem({
   viewsDir: __dirname + '/views',
   blocksDir: __dirname + '/views/blocks',
   pugOptions: {
@@ -76,7 +76,13 @@ pbem({
 });
 ```
 
-#### Method `pbem.createTemplate(name[, options])`
+#### Method `namespace.precompile()`
+
+Precompile all templates in namespace.
+
+`@returns` `Object` **`namespace`**
+
+#### Method `namespace.createTemplate(name[, options])`
 
 Create a main template as an instance of class
 [**`Template`**](./lib/Template.js).
@@ -93,12 +99,12 @@ Create a main template as an instance of class
         will be available in property `privates` of Template instance
 
 ```javascript
-const pbem = require('pbem')({
+const mainScope = require('pbem')({
   viewsDir: __dirname + '/views'
 });
 
 // __dirname + '/views/index.pug'
-let indexTemplate = pbem.createTemplate('index');
+let indexTemplate = mainScope.createTemplate('index');
 
 // Render template and return as string
 indexTemplate.toString();

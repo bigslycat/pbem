@@ -2,14 +2,13 @@
 
 const pug = require('pug');
 
-const config = require('../lib/Config');
 const {compiledTemplates} = require('../scope');
 
-module.exports = templatePath => {
+module.exports = (templatePath, pugOptions = {}) => {
   if (!compiledTemplates[templatePath]) {
     compiledTemplates[templatePath] = pug.compileFile(
       templatePath,
-      Object.assign({}, config.pugOptions)
+      Object.assign({}, pugOptions)
     );
   }
 

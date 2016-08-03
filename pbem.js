@@ -1,15 +1,12 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
 const PRIVATE = Symbol();
 
-const scope = require('./scope');
+require('./lib/Template')(PRIVATE);
+require('./lib/Block')(PRIVATE);
+require('./lib/Element')(PRIVATE);
 
-require('./lib/Template')(PRIVATE, scope);
-require('./lib/Block')(PRIVATE, scope);
-require('./lib/Element')(PRIVATE, scope);
+const scope = require('./scope');
 
 const presetMethodsMaping = {
   mod: {
@@ -38,40 +35,14 @@ for (let methodName in presetMethodsMaping) {
   };
 }
 
-const config = require('./lib/Config');
-const objectFilter = require('./helpers/objectFilter');
-const compileTemplate = require('./helpers/compileTemplate');
+const PBEM = require('./lib/PBEM');
 
-module.exports = Object.assign(
-  function setConfig(newConfig) {
-    Object.assign(config, newConfig);
+function pbem(newConfig) {
+  return new PBEM(newConfig);
+}
 
-    config.viewsDir = fs.realpathSync(config.viewsDir);
-    config.blocksDir = fs.realpathSync(config.blocksDir);
+pbem.createTemplate = function(name, options) {
+  return pbem().createTemplate(name, options);
+};
 
-    return setConfig;
-  }, {
-    precompile() {
-      let {viewsDir, blocksDir} = config;
-
-      let filePatternPart = '*' + config.templateExt;
-      let viewsPathsPattern = path.join(viewsDir, filePatternPart);
-      let blocksPathsPattern = path.join(blocksDir, '**', filePatternPart);
-
-      glob.sync(viewsPathsPattern).concat(
-        glob.sync(blocksPathsPattern)
-      ).forEach(templatePath => compileTemplate(templatePath));
-
-      return this;
-    },
-
-    createTemplate(name, options = {}) {
-      return new scope.Template(name, objectFilter(
-        options,
-        'locals',
-        'pugOptions',
-        'debug'
-      ));
-    }
-  }
-);
+module.exports = pbem;
