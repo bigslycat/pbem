@@ -25,7 +25,7 @@ npm run demo
 ```
 
 And rendered template will be displayed in the terminal. Also you can run this
-command from yor app directory:
+command from your app directory:
 
 ```bash
 node -e 'require("pbem/demo")'
