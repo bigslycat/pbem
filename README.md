@@ -2,10 +2,13 @@
 
 BEM-helper system for Pug (Jade)
 
--   [x] Precompiling all templates before usage
--   [x] Custom delimiters of file/class names
--   [x] [Redefinition levels](https://en.bem.info/methodology/filesystem/#examples-of-using-redefinition-levels)
--   [ ] Lazy async templates compiling
+-   [x] Precompiling all templates before usage #7
+-   [x] Custom delimiters of file/class names #8
+-   [x] [Redefinition levels](https://en.bem.info/methodology/filesystem/#examples-of-using-redefinition-levels) #10
+-   [ ] Complete pretty-mode #6
+-   [ ] Precompile to file / load precompiled from file #13
+-   [ ] Express middleware #12
+-   [ ] Interface for Gulp #11
 
 ## Installation
 
@@ -93,8 +96,6 @@ Create a main template as an instance of class
 
     -   `Object` **`locals`** — Data for rendering
 
-    -   `Object` **`pugOptions`** — Owerwrite pug options for template
-
     -   `Boolean` **`debug`** — Debug mode. All private properties and methods
         will be available in property `privates` of Template instance
 
@@ -160,8 +161,6 @@ Alias of method `Template.prototype.createBlock()`
     -   `Object` **`attributes`** — Other HTML attributes
 
     -   `Object` **`locals`** — Data for rendering
-
-    -   `Object` **`pugOptions`** — Owerwrite pug options for template
 
     -   `Boolean` **`debug`** — Debug mode. All private properties and methods
         will be available in property `privates` of Template instance
