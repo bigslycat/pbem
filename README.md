@@ -2,13 +2,20 @@
 
 BEM-helper system for Pug (Jade)
 
--   [x] Precompiling all templates before usage #7
--   [x] Custom delimiters of file/class names #8
--   [x] [Redefinition levels](https://en.bem.info/methodology/filesystem/#examples-of-using-redefinition-levels) #10
--   [ ] Complete pretty-mode #6
--   [ ] Precompile to file / load precompiled from file #13
--   [ ] Express middleware #12
--   [ ] Interface for Gulp #11
+-   [x] [Precompiling all templates before usage](https://github.com/bigslycat/pbem/issues/7)
+
+-   [x] [Custom delimiters of file/class names](https://github.com/bigslycat/pbem/issues/8)
+
+-   [x] [Redefinition levels](https://github.com/bigslycat/pbem/issues/10)
+        ([examples of using this in BEM](https://en.bem.info/methodology/filesystem/#examples-of-using-redefinition-levels))
+
+-   [ ] [Complete pretty-mode](https://github.com/bigslycat/pbem/issues/6)
+
+-   [ ] [Precompile to file / load precompiled from file](https://github.com/bigslycat/pbem/issues/13)
+
+-   [ ] [Express middleware](https://github.com/bigslycat/pbem/issues/12)
+
+-   [ ] [Interface for Gulp](https://github.com/bigslycat/pbem/issues/11)
 
 ## Installation
 
