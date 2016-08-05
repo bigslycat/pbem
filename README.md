@@ -2,20 +2,25 @@
 
 BEM-helper system for Pug (Jade)
 
--   [x] [Precompiling all templates before usage](https://github.com/bigslycat/pbem/issues/7)
+-   [x] [Precompiling all templates before usage][7]
 
--   [x] [Custom delimiters of file/class names](https://github.com/bigslycat/pbem/issues/8)
+-   [x] [Custom template file name extensions][15]
 
--   [x] [Redefinition levels](https://github.com/bigslycat/pbem/issues/10)
-        ([examples of using this in BEM](https://en.bem.info/methodology/filesystem/#examples-of-using-redefinition-levels))
+-   [x] [Custom delimiters of file/class names][8]
 
--   [ ] [Complete pretty-mode](https://github.com/bigslycat/pbem/issues/6)
+-   [x] [Redefinition levels][10]
+        ([examples of using this in BEM][redefinition-levels])
 
--   [ ] [Precompile to file / load precompiled from file](https://github.com/bigslycat/pbem/issues/13)
+-   [ ] [Checking for mixes and modifiers][14] of current block or element
+        within the template
 
--   [ ] [Express middleware](https://github.com/bigslycat/pbem/issues/12)
+-   [ ] [Complete pretty-mode][6]
 
--   [ ] [Interface for Gulp](https://github.com/bigslycat/pbem/issues/11)
+-   [ ] [Precompile to file / load precompiled from file][13]
+
+-   [ ] [Express middleware][12]
+
+-   [ ] [Interface for Gulp][11]
 
 ## Installation
 
@@ -70,7 +75,7 @@ Create a namespace. Each namespace contains the custom settings.
     -   `String` **`vordsDelimiter`** — Words delimiter in modifier name and
         value. Default `_`
 
-    -   `Object` **`pugOptions`** — Pug [options](http://jade-lang.com/api/)
+    -   `Object` **`pugOptions`** — Pug [options][pug-api]
 
     `@returns` `Object` **`namespace`**
 
@@ -95,7 +100,7 @@ Precompile all templates in namespace.
 #### Method `namespace.createTemplate(name[, options])`
 
 Create a main template as an instance of class
-[**`Template`**](./lib/Template.js).
+[**`Template`**][template].
 
 -   `String` **`name`** — Template file name without extension
 
@@ -172,7 +177,7 @@ Alias of method `Template.prototype.createBlock()`
     -   `Boolean` **`debug`** — Debug mode. All private properties and methods
         will be available in property `privates` of Template instance
 
-    `@returns` [**`Block`**](./lib/Block.js) instance.
+    `@returns` [**`Block`**][block] instance.
 
 #### Function `element(name[, options])`
 
@@ -185,7 +190,7 @@ alias of method `Element.prototype.createElement()` in Element template.
 
 -   `Object` **`options`** — Template options like options of `block()`
 
-    `@returns` [**`Element`**](./lib/Element.js) instance.
+    `@returns` [**`Element`**][element] instance.
 
 #### Function `attributes()`
 
@@ -203,8 +208,8 @@ div&attributes( attributes() )
 
 Adds locals
 
-There is in the [**`Template`**](./lib/Template.js),
-[**`Block`**](./lib/Block.js), [**`Element`**](./lib/Element.js)
+There is in the [**`Template`**][template], [**`Block`**][block],
+[**`Element`**][element]
 
 ```javascript
 pbem.createTemplate('index')
@@ -221,8 +226,8 @@ pbem.createTemplate('index')
 
 Adds one or many modifiers, attributes or data-attributes
 
-There is in the [**`Block`**](./lib/Block.js),
-[**`Element`**](./lib/Element.js). Also used, as in the previous case.
+There is in the [**`Block`**][block],
+[**`Element`**][element]. Also used, as in the previous case.
 
 #### Method `mix(blockName[, elementName][, modifiers])`
 
@@ -244,3 +249,21 @@ One mix or many mixes:
 // As Array
 .mix([{block: 'block-1'}, ['block-2', 'element-2', {mod2: true}], ...])
 ```
+
+[7]: https://github.com/bigslycat/pbem/issues/7 'v1.0.0'
+[15]: https://github.com/bigslycat/pbem/issues/15 'v1.0.0'
+[8]: https://github.com/bigslycat/pbem/issues/8 'v1.1.0'
+[10]: https://github.com/bigslycat/pbem/issues/10 'v2.0.0'
+[14]: https://github.com/bigslycat/pbem/issues/14 'v2.2.0'
+[6]: https://github.com/bigslycat/pbem/issues/6 'v2.1.0'
+[13]: https://github.com/bigslycat/pbem/issues/13
+[12]: https://github.com/bigslycat/pbem/issues/12
+[11]: https://github.com/bigslycat/pbem/issues/11
+
+[template]: ./lib/Template.js
+[block]: ./lib/Block.js
+[element]: ./lib/Element.js
+
+[redefinition-levels]: https://en.bem.info/methodology/filesystem/#examples-of-using-redefinition-levels 'Examples of using redefinition levels on bem.info'
+
+[pug-api]: http://jade-lang.com/api/
