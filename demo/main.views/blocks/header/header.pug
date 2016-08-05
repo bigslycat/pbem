@@ -1,7 +1,9 @@
 header&attributes( attributes() )
+  if isMod('theme')
+    | This theme is #{mod('theme')}
 
   //- .header__title
   != element('title').local('title', title)
 
   //- .header__description
-  != element('description').local({description})
+  != element('description').local({description}).mod('withLink')

@@ -1,1 +1,3 @@
 p&attributes( attributes() )= description
+  if isMod('withLink')
+    != block('link').attr('href', 'http://example.com').local('text', 'link')

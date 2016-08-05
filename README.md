@@ -2,6 +2,8 @@
 
 BEM-helper system for Pug (Jade)
 
+## TODO
+
 -   [x] [Precompiling all templates before usage][7]
 
 -   [x] [Custom template file name extensions][15]
@@ -11,7 +13,7 @@ BEM-helper system for Pug (Jade)
 -   [x] [Redefinition levels][10]
         ([examples of using this in BEM][redefinition-levels])
 
--   [ ] [Checking for mixes and modifiers][14] of current block or element
+-   [x] [Checking for mixes and modifiers][14] of current block or element
         within the template
 
 -   [x] [Complete pretty-mode][6]
@@ -251,6 +253,27 @@ One mix or many mixes:
 
 // As Array
 .mix([{block: 'block-1'}, ['block-2', 'element-2', {mod2: true}], ...])
+```
+
+#### Method `isMod(name[, value])`
+
+Checks a modifier of current block/element
+
+```pug
+//- Converse type of value to Boolean
+isMod('modifier')
+
+//- Strict comparison
+isMod('modifier', 'value')
+```
+
+#### Method `mod(name)`
+
+Get modifier value
+
+```pug
+if isMod('theme')
+  | This theme name is #{mod('theme')}
 ```
 
 [7]: https://github.com/bigslycat/pbem/issues/7 'v1.0.0'
