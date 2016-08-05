@@ -14,7 +14,7 @@ BEM-helper system for Pug (Jade)
 -   [ ] [Checking for mixes and modifiers][14] of current block or element
         within the template
 
--   [ ] [Complete pretty-mode][6]
+-   [x] [Complete pretty-mode][6]
 
 -   [ ] [Precompile to file / load precompiled from file][13]
 
@@ -76,6 +76,9 @@ Create a namespace. Each namespace contains the custom settings.
         value. Default `_`
 
     -   `Object` **`pugOptions`** — Pug [options][pug-api]
+
+    -   `Object` **`beautify`** — Beautify [options][js-beautify] (works if
+        `config.pugOptions.pretty === true`)
 
     `@returns` `Object` **`namespace`**
 
@@ -267,3 +270,4 @@ One mix or many mixes:
 [redefinition-levels]: https://en.bem.info/methodology/filesystem/#examples-of-using-redefinition-levels 'Examples of using redefinition levels on bem.info'
 
 [pug-api]: http://jade-lang.com/api/
+[js-beautify]: https://www.npmjs.com/package/js-beautify#css--html

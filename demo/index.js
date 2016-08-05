@@ -35,14 +35,10 @@ let renderedAdditionalScopeMarkup = additionalScope.createTemplate('page')
   .local('content', data.content)
   .toString();
 
-console.log(
-  'renderedMainScopeMarkup:\n\n',
-  renderedMainScopeMarkup,
-  '\n\n'
-);
+console.log('renderedMainScopeMarkup:\n');
 
-console.log(
-  'renderedAdditionalScopeMarkup:\n\n',
-  renderedAdditionalScopeMarkup,
-  '\n\n'
-);
+console.log(renderedMainScopeMarkup + '\n');
+
+console.log('renderedAdditionalScopeMarkup:\n');
+
+console.log(renderedAdditionalScopeMarkup + '\n');
