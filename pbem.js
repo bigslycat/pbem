@@ -41,8 +41,7 @@ function pbem(newConfig) {
   return new PBEM(newConfig);
 }
 
-pbem.createTemplate = function(name, options) {
-  return pbem().createTemplate(name, options);
-};
+pbem.createTemplate = (name, options) => pbem().createTemplate(name, options);
+pbem.createBlock = (name, options) => pbem().createBlock(name, options);
 
 module.exports = pbem;

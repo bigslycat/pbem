@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const pug = require('pug');
 const pbem = require('../pbem');
 
 let mainScope = pbem({
@@ -11,10 +12,12 @@ let mainScope = pbem({
   }
 }).precompile();
 
-let additionalScope = pbem({
+let additionalScopeConfig = {
   viewsDir: path.join(__dirname, 'additional.views'),
   blocksDir: path.join(__dirname, 'additional.views', 'blocks')
-}).precompile();
+};
+
+let additionalScope = pbem(additionalScopeConfig).precompile();
 
 let data = {
   pageTitle: 'PBEM',
@@ -36,9 +39,21 @@ let renderedAdditionalScopeMarkup = additionalScope.createTemplate('page')
   .toString();
 
 console.log('renderedMainScopeMarkup:\n');
-
 console.log(renderedMainScopeMarkup + '\n');
 
 console.log('renderedAdditionalScopeMarkup:\n');
-
 console.log(renderedAdditionalScopeMarkup + '\n');
+
+const separateTemplatePath = path.join(
+  additionalScopeConfig.viewsDir,
+  'page.pug'
+);
+
+const separateTemplate = pug.compileFile(separateTemplatePath);
+
+data.block = additionalScope.createBlock;
+
+let renderedSeparateTemplate = separateTemplate(data);
+
+console.log('renderedSeparateTemplate:\n');
+console.log(renderedSeparateTemplate + '\n');

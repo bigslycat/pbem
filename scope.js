@@ -8,5 +8,19 @@ module.exports = {
   compiledTemplates: {
     templates: {},
     blocks: {}
-  }
+  },
+  templateFilterOptions: [
+    'scopeConfig',
+    'locals',
+    'debug'
+  ],
+  blockFilterOptions: [
+    'scopeConfig',
+    'mods',
+    'mixes',
+    'data',
+    'attributes',
+    'locals',
+    'debug'
+  ]
 };

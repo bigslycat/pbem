@@ -18,6 +18,8 @@ BEM-helper system for Pug (Jade)
 
 -   [x] [Complete pretty-mode][6]
 
+-   [x] [Create block separately][16]
+
 -   [ ] [Precompile to file / load precompiled from file][13]
 
 -   [ ] [Express middleware][12]
@@ -126,6 +128,23 @@ let indexTemplate = mainScope.createTemplate('index');
 
 // Render template and return as string
 indexTemplate.toString();
+```
+
+#### Method `namespace.createBlock(name[, options])`
+
+```javascript
+const pug = require('pug');
+const pbem = require('pbem');
+
+const scope = pbem({
+  blocksDir: __dirname + 'views/blocks'
+}).precompile();
+
+const separateTemplate = pug.compileFile(__dirname + 'views/page.pug');
+
+let renderedSeparateTemplate = separateTemplate({
+  block: scope.createBlock
+});
 ```
 
 ### Template API
@@ -282,6 +301,7 @@ if isMod('theme')
 [10]: https://github.com/bigslycat/pbem/issues/10 'v2.0.0'
 [14]: https://github.com/bigslycat/pbem/issues/14 'v2.2.0'
 [6]: https://github.com/bigslycat/pbem/issues/6 'v2.1.0'
+[16]: https://github.com/bigslycat/pbem/issues/16 'v2.3.0'
 [13]: https://github.com/bigslycat/pbem/issues/13
 [12]: https://github.com/bigslycat/pbem/issues/12
 [11]: https://github.com/bigslycat/pbem/issues/11
