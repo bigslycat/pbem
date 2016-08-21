@@ -1,6 +1,6 @@
 {
   "name": "pbem",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "BEM-helper system for Pug (Jade)",
   "main": "pbem.js",
   "scripts": {
