@@ -1,5 +1,7 @@
 # PBEM
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/bigslycat/pbem.svg)](https://greenkeeper.io/)
+
 BEM-helper system for Pug (Jade)
 
 ## TODO
